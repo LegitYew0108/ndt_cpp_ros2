@@ -18,10 +18,17 @@
 #include <vector>
 #include <sstream>
 #include <cmath>
-
 #include <chrono>
+#include "ndt_cpp_ros2/flatkdtree.h"
+#include <rclcpp/rclcpp.hpp>
+#include <sensor_msgs/msg/laser_scan.hpp>
+#include <nav_msgs/msg/occupancy_grid.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <tf2/LinearMath/Quaternion.h>
+#include <geometry_msgs/msg/transform_stamped.hpp>
+#include <tf2_ros/transform_listener.h>
+#include <tf2_ros/buffer.h>
 
-#include "flatkdtree.h"
 
 struct point2{
     float x, y;
@@ -72,25 +79,6 @@ template <>
 struct kdtree::trait::dimension<ndtpoint2> {
     static constexpr std::size_t value = 2;
 };
-
-void readScanPoints(const std::string& file_path, std::vector<point2>& points){
-    std::ifstream file(file_path);
-    if (!file.is_open()) {
-        std::cerr << "File could not be opened." << std::endl;
-        return;
-    }
-
-    std::string line_str;
-    point2 p;
-    while(std::getline(file, line_str)){
-        std::istringstream iss(line_str);
-        if (!(iss >> p.x >> p.y)) {
-            std::cerr << "Failed to parse line: " << line_str << std::endl;
-            continue;
-        }
-        points.push_back(p);
-    }
-}
 
 mat3x3 makeTransformationMatrix(const float& tx, const float& ty, const float& theta) {
     mat3x3 mat = {
@@ -419,7 +407,6 @@ void ndt_scan_matching(mat3x3& trans_mat, const std::vector<point2>& source_poin
     }
 }
 
-//debug
 void writePointsToSVG(const std::vector<point2>& point_1, const std::vector<point2>& point_2, const std::string& file_name) {
     std::ofstream file(file_name);
     if (!file.is_open()) {
@@ -442,28 +429,121 @@ void writePointsToSVG(const std::vector<point2>& point_1, const std::vector<poin
     file.close();
 }
 
-int main(void){
-    std::vector<point2> scan_points1;
-    std::vector<point2> target_points;
-    readScanPoints("./data/scan_1.txt", scan_points1);
-    readScanPoints("./data/scan_2.txt", target_points);
 
-    auto trans_mat1 = makeTransformationMatrix(1.0f, 0.0f, 0.5f);
-    transformPointsZeroCopy(trans_mat1, scan_points1);
 
-    auto ndt_points = std::vector<ndtpoint2>();
-    auto start_time = std::chrono::high_resolution_clock::now();
+class ndt_cpp_ros2 : public rclcpp::Node
+{
+public:
+    ndt_cpp_ros2():Node("ndt_cpp_ros2")
+    {
+        scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
+            "/scan", rclcpp::SensorDataQoS(), std::bind(&ndt_cpp_ros2::scan_callback, this, std::placeholders::_1));
+        map_sub_ =this->create_subscription<nav_msgs::msg::OccupancyGrid>(
+            "/map", 10, std::bind(&ndt_cpp_ros2::map_callback, this, std::placeholders::_1));
+        pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("output/pose", 10);
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&ndt_cpp_ros2::timer_callback, this));
+    }
 
-    compute_ndt_points(target_points, ndt_points);
-    ndt_scan_matching(trans_mat1, scan_points1, ndt_points);
+private:
+    std::vector<point2> map_points;
+    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
+    rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr map_sub_;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pose_pub_;
+    std::vector<point2> transformed_scan_points;
+    rclcpp::TimerBase::SharedPtr timer_;
 
-    auto end_time = std::chrono::high_resolution_clock::now();
+    void timer_callback()
+    {       
+        if(map_points.empty() || transformed_scan_points.empty()){
+            return;
+        }
+        auto trans_mat1 = makeTransformationMatrix(0.0f, 0.0f, 0.0f);
+        auto ndt_points = std::vector<ndtpoint2>();
 
-    transformPointsZeroCopy(trans_mat1, scan_points1);
+        compute_ndt_points(map_points, ndt_points);
+        ndt_scan_matching(trans_mat1, transformed_scan_points, ndt_points);
+        // RCLCPP_INFO(this->get_logger(), "x: %f, y: %f ,theta: %f",);
+        geometry_msgs::msg::PoseStamped pose;
+        pose.header.stamp = this->now();
+        pose.header.frame_id = msg->header.frame_id;   
+        pose.pose.position.x=trans_mat1.c;
+        pose.pose.position.y=trans_mat1.f;
+        pose.pose.position.z=0.0;
+        
+        tf2::Quaternion q;
+        q.setRPY(0, 0, std::atan(trans_mat1.d/trans_mat1.a));
+        pose.pose.orientation.x = q.x();
+        pose.pose.orientation.y = q.y();
+        pose.pose.orientation.z = q.z();
+        pose.pose.orientation.w = q.w();
+        pose_pub_->publish(pose);
+        RCLCPP_INFO(this->get_logger(),"x:%f, y:%f, z:%f",pose.pose.position.x,pose.pose.position.y,std::atan(trans_mat1.d/trans_mat1.a));
+        writePointsToSVG(transformed_scan_points, map_points, "scan_points.svg");
+    }
 
-    //debug
-    auto microsec = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count() / 1e6;
-    std::cout << (microsec) << " mill sec" << std::endl;
+    void scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
+    {
+        transformed_scan_points.clear();
+        for (size_t i = 0; i < msg->ranges.size(); i++)
+        {
+            if (msg->ranges[i] < msg->range_min || msg->ranges[i] > msg->range_max)
+            {
+                continue;
+            }
+            point2 point;
+            point.x = msg->ranges[i] * cosf(msg->angle_min + msg->angle_increment * i - M_PI/2)-0.5;
+            point.y = msg->ranges[i] * sinf(msg->angle_min + msg->angle_increment * i - M_PI/2)-0.0;
+            transformed_scan_points.push_back(point);    
+        }
 
-    writePointsToSVG(scan_points1, target_points, "scan_points.svg");
+    }
+
+    void map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
+    {
+        map_points.clear();
+        for (size_t i = 0; i < msg->data.size(); i++)
+        {
+            if (msg->data[i] == 100)
+            {
+                point2 point;
+                point.x = (i % msg->info.width) * msg->info.resolution+msg->info.origin.position.x;
+                point.y = (i / msg->info.width) * msg->info.resolution+msg->info.origin.position.y;
+                map_points.push_back(point);
+            }
+        }
+    }
+
+    // int main(void){
+    //     std::vector<point2> scan_points1;
+    //     std::vector<point2> target_points;
+    //     readScanPoints("./data/scan_1.txt", scan_points1);
+    //     readScanPoints("./data/scan_2.txt", target_points);
+
+    //     auto trans_mat1 = makeTransformationMatrix(1.0f, 0.0f, 0.5f);
+    //     transformPointsZeroCopy(trans_mat1, scan_points1);
+
+    //     auto ndt_points = std::vector<ndtpoint2>();
+    //     auto start_time = std::chrono::high_resolution_clock::now();
+
+    //     compute_ndt_points(target_points, ndt_points);
+    //     ndt_scan_matching(trans_mat1, scan_points1, ndt_points);
+
+    //     auto end_time = std::chrono::high_resolution_clock::now();
+
+    //     transformPointsZeroCopy(trans_mat1, scan_points1);
+
+    //     //debug
+    //     auto microsec = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count() / 1e6;
+    //     std::cout << (microsec) << " mill sec" << std::endl;
+    // }
+    double get_yaw(const geometry_msgs::msg::Quaternion &q){return atan2(2.0 * (q.w * q.z + q.x * q.y), 1.0 - 2.0 * (q.y * q.y + q.z * q.z));}
+
+};
+
+int main(int argc, char** argv){
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<ndt_cpp_ros2>();
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
 }

@@ -2,23 +2,34 @@
 
 Minimum NDT
 
-
 https://github.com/TakanoTaiga/ndt_cpp/assets/53041471/510656ef-73a8-49dd-b51f-698165e1922a
 
 
 
 ## RUN
 
-g++
-```
-g++ -O2 ./ndt-cpu-single.cpp && ./a.out
+```bash
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone https://github.com/kazu-321/ndt_cpp_ros2.git
+cd ~/ros2_ws
+colcon build --symlink-install
+source ~/ros2_ws/install/setup.bash
+ros2 run ndt_cpp_ros2 ndt_cpp_ros2
 ```
 
-NVIDIA HPC SDK
-```
-nvc++ -fast -O2 ./ndt-cpu-single.cpp && ./a.out
-```
+## IO
+### Input
+- `/input/scan`:  sensor_msgs::msg::LaserScan
+- `/input/map` :  nav_msgs::msg::OccupancyGrid
 
+### Output
+- `/output/pose`: geometry_msgs::msg::PoseStamped
+- `/tf`:
+
+<!-- ## Parameters
+- `map_frame_id`: map frame id
+- `base_frame_id`: base frame id -->
 
 ## LICENSE
 
