@@ -318,7 +318,7 @@ mat2x2 compute_covariance(const std::vector<point2>& points, const point2& mean)
 }
 
 void compute_ndt_points(std::vector<point2>& points, std::vector<ndtpoint2> &results){
-    auto N = 10;
+    auto N = 20;
 
     const auto point_size = points.size();
 
@@ -338,7 +338,7 @@ void compute_ndt_points(std::vector<point2>& points, std::vector<ndtpoint2> &res
 }
 
 void ndt_scan_matching(mat3x3& trans_mat, const std::vector<point2>& source_points, std::vector<ndtpoint2>& target_points){
-    const size_t max_iter_num = 20;
+    const size_t max_iter_num = 50;
     const float max_distance2 = 3.0f * 3.0f;
 
     const size_t target_points_size = target_points.size();
@@ -442,6 +442,9 @@ public:
             "/map", 10, std::bind(&ndt_cpp_ros2::map_callback, this, std::placeholders::_1));
         pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("output/pose", 10);
         timer_ = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&ndt_cpp_ros2::timer_callback, this));
+        old_point.x = 0.0;
+        old_point.y = 0.0;
+        old_point.z = 0.0;
     }
 
 private:
@@ -457,28 +460,35 @@ private:
         if(map_points.empty() || transformed_scan_points.empty()){
             return;
         }
-        auto trans_mat1 = makeTransformationMatrix(0.0f, 0.0f, 0.0f);
+        auto trans_mat1 = makeTransformationMatrix(old_point.x, old_point.y, old_point.z);
         auto ndt_points = std::vector<ndtpoint2>();
 
         compute_ndt_points(map_points, ndt_points);
         ndt_scan_matching(trans_mat1, transformed_scan_points, ndt_points);
-        // RCLCPP_INFO(this->get_logger(), "x: %f, y: %f ,theta: %f",);
+        float x=trans_mat1.c;
+        float y=trans_mat1.f;
+        float theta=std::atan(trans_mat1.d/trans_mat1.a);
         geometry_msgs::msg::PoseStamped pose;
         pose.header.stamp = this->now();
-        pose.header.frame_id = msg->header.frame_id;   
-        pose.pose.position.x=trans_mat1.c;
-        pose.pose.position.y=trans_mat1.f;
+        pose.header.frame_id = "map";   
+        pose.pose.position.x=x;
+        pose.pose.position.y=y;
         pose.pose.position.z=0.0;
         
         tf2::Quaternion q;
-        q.setRPY(0, 0, std::atan(trans_mat1.d/trans_mat1.a));
+        q.setRPY(0, 0, theta);
         pose.pose.orientation.x = q.x();
         pose.pose.orientation.y = q.y();
         pose.pose.orientation.z = q.z();
         pose.pose.orientation.w = q.w();
         pose_pub_->publish(pose);
-        RCLCPP_INFO(this->get_logger(),"x:%f, y:%f, z:%f",pose.pose.position.x,pose.pose.position.y,std::atan(trans_mat1.d/trans_mat1.a));
+        RCLCPP_INFO(this->get_logger(),"x:%f, y:%f, theta:%f",x,y,theta);
         writePointsToSVG(transformed_scan_points, map_points, "scan_points.svg");
+        if(-1.0<=x&&x<=3.5&&-1.0<=y&&y<=4.5){
+            old_point.x=x;
+            old_point.y=y;
+            old_point.z=theta;
+        }
     }
 
     void scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
@@ -537,6 +547,7 @@ private:
     //     std::cout << (microsec) << " mill sec" << std::endl;
     // }
     double get_yaw(const geometry_msgs::msg::Quaternion &q){return atan2(2.0 * (q.w * q.z + q.x * q.y), 1.0 - 2.0 * (q.y * q.y + q.z * q.z));}
+    point3 old_point;
 
 };
 
