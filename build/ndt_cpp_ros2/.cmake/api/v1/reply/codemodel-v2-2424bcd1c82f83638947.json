@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-b3077f972f954b0e878f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ndt_cpp_ros2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ndt_cpp_ros2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndt_cpp_ros2-a94bf15dd94327d38c40.json",
+					"name" : "ndt_cpp_ros2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ndt_cpp_ros2_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ndt_cpp_ros2_uninstall-e80af53abcdf8d28e3d9.json",
+					"name" : "ndt_cpp_ros2_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-6aec887f997c017914ee.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2",
+		"source" : "/home/robohan/Gakurobo2025/ndt_cpp_ros2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
