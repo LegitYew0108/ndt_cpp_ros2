@@ -443,6 +443,9 @@ public:
 				this->declare_parameter("odom_frame_id", "odom");
 				this->declare_parameter("base_frame_id", "base_link");
 				this->declare_parameter("laser_frame_id", "laser_link");
+				this->declare_parameter("initial_pose_x", 0.0);
+				this->declare_parameter("initial_pose_y", 0.0);
+				this->declare_parameter("initial_pose_yaw", 0.0);
 				
 				tfBroadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 				tfBuffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
@@ -457,6 +460,19 @@ public:
         old_point.x = 0.0;
         old_point.y = 0.0;
         old_point.z = 0.0;
+
+				geometry_msgs::msg::TransformStamped transformStamped;
+				transformStamped.header.stamp = this->now();
+				transformStamped.header.frame_id = "map";
+				transformStamped.child_frame_id = "odom";
+				transformStamped.transform.translation.x = this->get_parameter("initial_pose_x").as_double();
+				transformStamped.transform.translation.y = this->get_parameter("initial_pose_y").as_double();
+				transformStamped.transform.translation.z = 0.0;
+				tf2::Quaternion q;
+				q.setRPY(0, 0, this->get_parameter("initial_pose_yaw").as_double());
+				transformStamped.transform.rotation = tf2::toMsg(q);
+
+				tfBroadcaster_->sendTransform(transformStamped);
     }
 
 private:
