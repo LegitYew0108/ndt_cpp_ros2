@@ -442,6 +442,7 @@ public:
 				this->declare_parameter("map_frame_id", "map");	
 				this->declare_parameter("odom_frame_id", "odom");
 				this->declare_parameter("base_frame_id", "base_link");
+				this->declare_parameter("laser_frame_id", "laser_link");
 				
 				tfBroadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 				tfBuffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
@@ -479,25 +480,27 @@ private:
 				std::string mapFrameRel = this->get_parameter("map_frame_id").as_string();
 				std::string odomFrameRel = this->get_parameter("odom_frame_id").as_string();
 				std::string baseFrameRel = this->get_parameter("base_frame_id").as_string();
+				std::string laserFrameRel = this->get_parameter("laser_frame_id").as_string();
 
-				geometry_msgs::msg::TransformStamped mapToBase;
+				geometry_msgs::msg::TransformStamped mapToLaser;
 				try {
-					mapToBase = tfBuffer_->lookupTransform(
-						baseFrameRel, mapFrameRel,
+					mapToLaser = tfBuffer_->lookupTransform(
+						laserFrameRel, mapFrameRel,
 						tf2::TimePointZero);
 				} catch (const tf2::TransformException & ex) {
 					RCLCPP_INFO(
 						this->get_logger(), "Could not transform %s to %s: %s",
-						baseFrameRel.c_str(), mapFrameRel.c_str(), ex.what());
+						laserFrameRel.c_str(), mapFrameRel.c_str(), ex.what());
 					return;
 				}
 
 
-        auto trans_mat1 = makeTransformationMatrix(mapToBase.transform.translation.x, mapToBase.transform.translation.y, mapToBase.transform.rotation.z);
+        auto trans_mat1 = makeTransformationMatrix(mapToLaser.transform.translation.x, mapToLaser.transform.translation.y, mapToLaser.transform.rotation.z);
         auto ndt_points = std::vector<ndtpoint2>();
 
         compute_ndt_points(map_points, ndt_points);
         ndt_scan_matching(trans_mat1, transformed_scan_points, ndt_points);
+
         float x=trans_mat1.c;
         float y=trans_mat1.f;
         float theta=std::atan(trans_mat1.d/trans_mat1.a);
@@ -512,20 +515,20 @@ private:
 				transform.setRotation(q);
 
 				// odom->base_linkの変換を取得
-				geometry_msgs::msg::TransformStamped odomToBase;
+				geometry_msgs::msg::TransformStamped odomToLaser;
 				try {
-					odomToBase = tfBuffer_->lookupTransform(
-						baseFrameRel, odomFrameRel,
+					odomToLaser = tfBuffer_->lookupTransform(
+						laserFrameRel, odomFrameRel,
 						tf2::TimePointZero);
 				} catch (const tf2::TransformException & ex) {
 					RCLCPP_INFO(
 						this->get_logger(), "Could not transform %s to %s: %s",
-						baseFrameRel.c_str(), odomFrameRel.c_str(), ex.what());
+						laserFrameRel.c_str(), odomFrameRel.c_str(), ex.what());
 					return;
 				}
 
 				tf2::Transform odomToBaseTF2;
-				tf2::fromMsg(odomToBase.transform, odomToBaseTF2);	
+				tf2::fromMsg(odomToLaser.transform, odomToBaseTF2);	
 				transform = transform * odomToBaseTF2.inverse();
 
 				geometry_msgs::msg::TransformStamped transformStamped;
