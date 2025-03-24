@@ -1,0 +1,133 @@
+[0.000000] (-) TimerEvent: {}
+[0.000509] (ndt_cpp_ros2) JobQueued: {'identifier': 'ndt_cpp_ros2', 'dependencies': OrderedDict()}
+[0.000580] (ndt_cpp_ros2) JobStarted: {'identifier': 'ndt_cpp_ros2'}
+[0.005212] (ndt_cpp_ros2) JobProgress: {'identifier': 'ndt_cpp_ros2', 'progress': 'cmake'}
+[0.005566] (ndt_cpp_ros2) JobProgress: {'identifier': 'ndt_cpp_ros2', 'progress': 'build'}
+[0.006002] (ndt_cpp_ros2) Command: {'cmd': ['/home/robohan/.local/bin/cmake', '--build', '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2', '--', '-j12', '-l12'], 'cwd': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2', 'env': OrderedDict({'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'HISTFILESIZE': '2000', 'LANGUAGE': 'en_US:en', 'WARP_HONOR_PS1': '0', 'USER': 'robohan', 'LC_TIME': 'ja_JP.UTF-8', 'XDG_SESSION_TYPE': 'x11', 'STM32CubeMX_PATH': '/home/robohan/STM32CubeMX', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda/lib64:', 'HOME': '/home/robohan', 'OLDPWD': '/home/robohan/Gakurobo2025', 'TERM_PROGRAM_VERSION': 'v0.2025.02.19.08.02.stable_04', 'DESKTOP_SESSION': 'ubuntu', 'NVM_BIN': '/home/robohan/.nvm/versions/node/v20.13.0/bin', 'NVM_INC': '/home/robohan/.nvm/versions/node/v20.13.0/include/node', 'WARP_USE_SSH_WRAPPER': '1', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/dev.warp.Warp.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SDL_IM_MODULE': 'fcitx', 'LC_MONETARY': 'ja_JP.UTF-8', 'MANAGERPID': '2160', 'SYSTEMD_EXEC_PID': '2631', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '8838', 'NVM_DIR': '/home/robohan/.nvm', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/install', 'ROS_DISTRO': 'jazzy', 'GTK_IM_MODULE': 'fcitx', 'LOGNAME': 'robohan', 'JOURNAL_STREAM': '8:22731', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'robohan', 'SSH_SOCKET_DIR': '~/.ssh', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WARP_IS_LOCAL_SHELL_SESSION': '1', 'WINDOWPATH': '2', 'PATH': '/home/robohan/.local/bin:/opt/ros/jazzy/bin:/usr/local/cuda/bin:/home/robohan/.local/share/pnpm:/home/robohan/.nvm/versions/node/v20.13.0/bin:/home/robohan/.cargo/bin:/home/robohan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/robohan/.dotnet/tools:/opt/nvim/:/opt/orca/:/home/robohan/apps/:/platform-tools', 'SESSION_MANAGER': 'local/robohan:@/tmp/.ICE-unix/2597,unix/robohan:/tmp/.ICE-unix/2597', 'INVOCATION_ID': 'd7525b66556647afa5aa46ae5e5c0ab8', 'PAPERSIZE': 'a4', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'ja_JP.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'DOTNET_BUNDLE_EXTRACT_BASE_DIR': '/home/robohan/.cache/dotnet_bundle_extract', 'LC_TELEPHONE': 'ja_JP.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_fastrtps_cpp', 'XMODIFIERS': '@im=fcitx', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'TERM_PROGRAM': 'WarpTerminal', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'ja_JP.UTF-8', 'QT_ACCESSIBILITY': '1', 'NDK_HOME': '/home/robohan/Android/Sdk/ndk/28.0.12674087', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ja_JP.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'ja_JP.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'fcitx', 'JAVA_HOME': '/home/robohan/android-studio/jbr', 'PWD': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'CLUTTER_IM_MODULE': 'fcitx', 'ANDROID_HOME': '/home/robohan/Android/Sdk', 'NVM_CD_FLAGS': '', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/robohan/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'ja_JP.UTF-8', 'LC_PAPER': 'ja_JP.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'PNPM_HOME': '/home/robohan/.local/share/pnpm', 'CMAKE_PREFIX_PATH': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.099890] (-) TimerEvent: {}
+[0.107264] (ndt_cpp_ros2) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/ndt_cpp_ros2.dir/src/ndt_cpp_ros2.cpp.o\x1b[0m\n'}
+[0.200017] (-) TimerEvent: {}
+[0.300271] (-) TimerEvent: {}
+[0.400550] (-) TimerEvent: {}
+[0.500818] (-) TimerEvent: {}
+[0.601150] (-) TimerEvent: {}
+[0.701450] (-) TimerEvent: {}
+[0.801759] (-) TimerEvent: {}
+[0.902114] (-) TimerEvent: {}
+[1.002406] (-) TimerEvent: {}
+[1.102686] (-) TimerEvent: {}
+[1.203017] (-) TimerEvent: {}
+[1.303347] (-) TimerEvent: {}
+[1.403630] (-) TimerEvent: {}
+[1.503953] (-) TimerEvent: {}
+[1.604197] (-) TimerEvent: {}
+[1.688639] (ndt_cpp_ros2) StderrLine: {'line': b'\x1b[01m\x1b[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid\x1b[01;32m\x1b[K ndt_scan_matching\x1b[m\x1b[K(mat3x3&, const std::vector<point2>&, std::vector<ndtpoint2>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.689032] (ndt_cpp_ros2) StderrLine: {'line': b'\x1b[01m\x1b[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:362:45:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kconst size_t\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst long unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[1.689141] (ndt_cpp_ros2) StderrLine: {'line': b'  362 | t_iter = 0; \x1b[01;35m\x1b[Kpoint_iter < source_points_size\x1b[m\x1b[K; point_iter += 10){\n'}
+[1.689219] (ndt_cpp_ros2) StderrLine: {'line': b'      |             \x1b[01;35m\x1b[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.689379] (ndt_cpp_ros2) StderrLine: {'line': b'\n'}
+[1.689463] (ndt_cpp_ros2) StderrLine: {'line': b'\x1b[01m\x1b[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:347:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Ktarget_points_size\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[1.689540] (ndt_cpp_ros2) StderrLine: {'line': b'  347 |     const size_t \x1b[01;35m\x1b[Ktarget_points_size\x1b[m\x1b[K = target_points.size();\n'}
+[1.689610] (ndt_cpp_ros2) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.704298] (-) TimerEvent: {}
+[1.804578] (-) TimerEvent: {}
+[1.904940] (-) TimerEvent: {}
+[2.005317] (-) TimerEvent: {}
+[2.105594] (-) TimerEvent: {}
+[2.205863] (-) TimerEvent: {}
+[2.306248] (-) TimerEvent: {}
+[2.406494] (-) TimerEvent: {}
+[2.506886] (-) TimerEvent: {}
+[2.607107] (-) TimerEvent: {}
+[2.707388] (-) TimerEvent: {}
+[2.807720] (-) TimerEvent: {}
+[2.908115] (-) TimerEvent: {}
+[3.008351] (-) TimerEvent: {}
+[3.108610] (-) TimerEvent: {}
+[3.208858] (-) TimerEvent: {}
+[3.309112] (-) TimerEvent: {}
+[3.409353] (-) TimerEvent: {}
+[3.509591] (-) TimerEvent: {}
+[3.609824] (-) TimerEvent: {}
+[3.710032] (-) TimerEvent: {}
+[3.810259] (-) TimerEvent: {}
+[3.910493] (-) TimerEvent: {}
+[4.010707] (-) TimerEvent: {}
+[4.111035] (-) TimerEvent: {}
+[4.211255] (-) TimerEvent: {}
+[4.311493] (-) TimerEvent: {}
+[4.411738] (-) TimerEvent: {}
+[4.511985] (-) TimerEvent: {}
+[4.612204] (-) TimerEvent: {}
+[4.712409] (-) TimerEvent: {}
+[4.812729] (-) TimerEvent: {}
+[4.912965] (-) TimerEvent: {}
+[5.013275] (-) TimerEvent: {}
+[5.113497] (-) TimerEvent: {}
+[5.213735] (-) TimerEvent: {}
+[5.313980] (-) TimerEvent: {}
+[5.414227] (-) TimerEvent: {}
+[5.514483] (-) TimerEvent: {}
+[5.614713] (-) TimerEvent: {}
+[5.714971] (-) TimerEvent: {}
+[5.815230] (-) TimerEvent: {}
+[5.915433] (-) TimerEvent: {}
+[6.015636] (-) TimerEvent: {}
+[6.115934] (-) TimerEvent: {}
+[6.216152] (-) TimerEvent: {}
+[6.316366] (-) TimerEvent: {}
+[6.416649] (-) TimerEvent: {}
+[6.516874] (-) TimerEvent: {}
+[6.617111] (-) TimerEvent: {}
+[6.717307] (-) TimerEvent: {}
+[6.817528] (-) TimerEvent: {}
+[6.917758] (-) TimerEvent: {}
+[7.017987] (-) TimerEvent: {}
+[7.118204] (-) TimerEvent: {}
+[7.218424] (-) TimerEvent: {}
+[7.318648] (-) TimerEvent: {}
+[7.418873] (-) TimerEvent: {}
+[7.519100] (-) TimerEvent: {}
+[7.619295] (-) TimerEvent: {}
+[7.719522] (-) TimerEvent: {}
+[7.819755] (-) TimerEvent: {}
+[7.920062] (-) TimerEvent: {}
+[8.020293] (-) TimerEvent: {}
+[8.120606] (-) TimerEvent: {}
+[8.220909] (-) TimerEvent: {}
+[8.321241] (-) TimerEvent: {}
+[8.421490] (-) TimerEvent: {}
+[8.521759] (-) TimerEvent: {}
+[8.622006] (-) TimerEvent: {}
+[8.722230] (-) TimerEvent: {}
+[8.726676] (ndt_cpp_ros2) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable ndt_cpp_ros2\x1b[0m\n'}
+[8.822327] (-) TimerEvent: {}
+[8.922563] (-) TimerEvent: {}
+[9.022812] (-) TimerEvent: {}
+[9.044279] (ndt_cpp_ros2) StdoutLine: {'line': b'[100%] Built target ndt_cpp_ros2\n'}
+[9.057327] (ndt_cpp_ros2) CommandEnded: {'returncode': 0}
+[9.057785] (ndt_cpp_ros2) JobProgress: {'identifier': 'ndt_cpp_ros2', 'progress': 'install'}
+[9.122897] (-) TimerEvent: {}
+[9.141488] (ndt_cpp_ros2) Command: {'cmd': ['/home/robohan/.local/bin/cmake', '--install', '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2'], 'cwd': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2', 'env': OrderedDict({'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'HISTFILESIZE': '2000', 'LANGUAGE': 'en_US:en', 'WARP_HONOR_PS1': '0', 'USER': 'robohan', 'LC_TIME': 'ja_JP.UTF-8', 'XDG_SESSION_TYPE': 'x11', 'STM32CubeMX_PATH': '/home/robohan/STM32CubeMX', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib:/usr/local/cuda/lib64:', 'HOME': '/home/robohan', 'OLDPWD': '/home/robohan/Gakurobo2025', 'TERM_PROGRAM_VERSION': 'v0.2025.02.19.08.02.stable_04', 'DESKTOP_SESSION': 'ubuntu', 'NVM_BIN': '/home/robohan/.nvm/versions/node/v20.13.0/bin', 'NVM_INC': '/home/robohan/.nvm/versions/node/v20.13.0/include/node', 'WARP_USE_SSH_WRAPPER': '1', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/dev.warp.Warp.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SDL_IM_MODULE': 'fcitx', 'LC_MONETARY': 'ja_JP.UTF-8', 'MANAGERPID': '2160', 'SYSTEMD_EXEC_PID': '2631', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '8838', 'NVM_DIR': '/home/robohan/.nvm', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/install', 'ROS_DISTRO': 'jazzy', 'GTK_IM_MODULE': 'fcitx', 'LOGNAME': 'robohan', 'JOURNAL_STREAM': '8:22731', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'robohan', 'SSH_SOCKET_DIR': '~/.ssh', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WARP_IS_LOCAL_SHELL_SESSION': '1', 'WINDOWPATH': '2', 'PATH': '/home/robohan/.local/bin:/opt/ros/jazzy/bin:/usr/local/cuda/bin:/home/robohan/.local/share/pnpm:/home/robohan/.nvm/versions/node/v20.13.0/bin:/home/robohan/.cargo/bin:/home/robohan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/robohan/.dotnet/tools:/opt/nvim/:/opt/orca/:/home/robohan/apps/:/platform-tools', 'SESSION_MANAGER': 'local/robohan:@/tmp/.ICE-unix/2597,unix/robohan:/tmp/.ICE-unix/2597', 'INVOCATION_ID': 'd7525b66556647afa5aa46ae5e5c0ab8', 'PAPERSIZE': 'a4', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'ja_JP.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'DOTNET_BUNDLE_EXTRACT_BASE_DIR': '/home/robohan/.cache/dotnet_bundle_extract', 'LC_TELEPHONE': 'ja_JP.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_fastrtps_cpp', 'XMODIFIERS': '@im=fcitx', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'TERM_PROGRAM': 'WarpTerminal', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'ja_JP.UTF-8', 'QT_ACCESSIBILITY': '1', 'NDK_HOME': '/home/robohan/Android/Sdk/ndk/28.0.12674087', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ja_JP.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'ja_JP.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'fcitx', 'JAVA_HOME': '/home/robohan/android-studio/jbr', 'PWD': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'CLUTTER_IM_MODULE': 'fcitx', 'ANDROID_HOME': '/home/robohan/Android/Sdk', 'NVM_CD_FLAGS': '', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/robohan/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'ja_JP.UTF-8', 'LC_PAPER': 'ja_JP.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'PNPM_HOME': '/home/robohan/.local/share/pnpm', 'CMAKE_PREFIX_PATH': '/home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[9.216614] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[9.216831] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[9.216994] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/lib/ndt_cpp_ros2/ndt_cpp_ros2\n'}
+[9.217183] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ament_index/resource_index/package_run_dependencies/ndt_cpp_ros2\n'}
+[9.217356] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ament_index/resource_index/parent_prefix_path/ndt_cpp_ros2\n'}
+[9.217399] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/ament_prefix_path.sh\n'}
+[9.217436] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/ament_prefix_path.dsv\n'}
+[9.217556] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/path.sh\n'}
+[9.217643] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/path.dsv\n'}
+[9.217683] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.bash\n'}
+[9.217720] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.sh\n'}
+[9.217767] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.zsh\n'}
+[9.217800] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.dsv\n'}
+[9.217833] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Symlinking: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/package.dsv\n'}
+[9.220287] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ament_index/resource_index/packages/ndt_cpp_ros2\n'}
+[9.220388] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/cmake/ndt_cpp_ros2Config.cmake\n'}
+[9.220429] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/cmake/ndt_cpp_ros2Config-version.cmake\n'}
+[9.220483] (ndt_cpp_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/package.xml\n'}
+[9.223074] (-) TimerEvent: {}
+[9.232430] (ndt_cpp_ros2) CommandEnded: {'returncode': 0}
+[9.240648] (ndt_cpp_ros2) JobEnded: {'identifier': 'ndt_cpp_ros2', 'rc': 0}
+[9.240944] (-) EventReactorShutdown: {}

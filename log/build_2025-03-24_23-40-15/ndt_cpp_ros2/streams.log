@@ -1,0 +1,34 @@
+[0.011s] Invoking command in '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /home/robohan/.local/bin/cmake --build /home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2 -- -j12 -l12
+[0.182s] [ 50%] [32mBuilding CXX object CMakeFiles/ndt_cpp_ros2.dir/src/ndt_cpp_ros2.cpp.o[0m
+[1.680s] [01m[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K ndt_scan_matching[m[K(mat3x3&, const std::vector<point2>&, std::vector<ndtpoint2>&)[m[K’:
+[1.680s] [01m[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:364:45:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kconst size_t[m[K’ {aka ‘[01m[Kconst long unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[1.680s]   364 | ; [01;35m[Kpoint_iter < source_points_size[m[K; point_iter += 10){
+[1.680s]       |   [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[1.680s] 
+[1.680s] [01m[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:349:18:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ktarget_points_size[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.680s]   349 | const size_t [01;35m[Ktarget_points_size[m[K = target_points.size();
+[1.680s]       |              [01;35m[K^~~~~~~~~~~~~~~~~~[m[K
+[1.681s] 
+[8.001s] [100%] [32m[1mLinking CXX executable ndt_cpp_ros2[0m
+[8.365s] [100%] Built target ndt_cpp_ros2
+[8.378s] Invoked command in '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /home/robohan/.local/bin/cmake --build /home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2 -- -j12 -l12
+[8.463s] Invoking command in '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /home/robohan/.local/bin/cmake --install /home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2
+[8.534s] -- Install configuration: ""
+[8.534s] -- Execute custom install script
+[8.534s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/lib/ndt_cpp_ros2/ndt_cpp_ros2
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ament_index/resource_index/package_run_dependencies/ndt_cpp_ros2
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ament_index/resource_index/parent_prefix_path/ndt_cpp_ros2
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/ament_prefix_path.sh
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/ament_prefix_path.dsv
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/path.sh
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/environment/path.dsv
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.bash
+[8.535s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.sh
+[8.536s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.zsh
+[8.536s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/local_setup.dsv
+[8.536s] -- Symlinking: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/package.dsv
+[8.539s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ament_index/resource_index/packages/ndt_cpp_ros2
+[8.539s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/cmake/ndt_cpp_ros2Config.cmake
+[8.539s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/cmake/ndt_cpp_ros2Config-version.cmake
+[8.539s] -- Up-to-date symlink: /home/robohan/Gakurobo2025/ndt_cpp_ros2/install/ndt_cpp_ros2/share/ndt_cpp_ros2/package.xml
+[8.549s] Invoked command in '/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /home/robohan/.local/bin/cmake --install /home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2
