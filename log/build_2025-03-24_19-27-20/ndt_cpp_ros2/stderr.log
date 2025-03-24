@@ -1,8 +1,0 @@
-[01m[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K ndt_scan_matching[m[K(mat3x3&, const std::vector<point2>&, std::vector<ndtpoint2>&)[m[K’:
-[01m[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:364:45:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kconst size_t[m[K’ {aka ‘[01m[Kconst long unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
-  364 | t_iter = 0; [01;35m[Kpoint_iter < source_points_size[m[K; point_iter += 10){
-      |             [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
-
-[01m[K/home/robohan/Gakurobo2025/ndt_cpp_ros2/src/ndt_cpp_ros2.cpp:349:18:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ktarget_points_size[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
-  349 |     const size_t [01;35m[Ktarget_points_size[m[K = target_points.size();
-      |                  [01;35m[K^~~~~~~~~~~~~~~~~~[m[K

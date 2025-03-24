@@ -1,1 +1,0 @@
-/home/robohan/Gakurobo2025/ndt_cpp_ros2/build/ndt_cpp_ros2/ament_cmake_environment_hooks/local_setup.zsh
