@@ -36,11 +36,6 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include <tf2/utils.h>
 
-// test
-#include <sensor_msgs/msg/point_cloud.hpp>
-#include <geometry_msgs/msg/point32.hpp>
-
-
 struct point2{
     float x, y;
 };
@@ -466,10 +461,6 @@ public:
         pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("output/pose", 10);
         timer_ = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&ndt_cpp_ros2::timer_callback, this));
 
-				//test
-				point_cloud_pub_ = this->create_publisher<sensor_msgs::msg::PointCloud>("output/point_cloud", 10);
-				point_cloud.header.frame_id = "laser_link";
-
         old_point.x = 0.0;
         old_point.y = 0.0;
         old_point.z = 0.0;
@@ -489,10 +480,6 @@ private:
     std::vector<point2> transformed_scan_points;
     rclcpp::TimerBase::SharedPtr timer_;
 		bool is_first;
-
-		//test
-		sensor_msgs::msg::PointCloud point_cloud;
-		rclcpp::Publisher<sensor_msgs::msg::PointCloud>::SharedPtr point_cloud_pub_;
 
     void timer_callback()
     {       
@@ -611,8 +598,6 @@ private:
 
     void scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
     {
-				point_cloud.points.clear();
-
         transformed_scan_points.clear();
         for (size_t i = 0; i < msg->ranges.size(); i++)
         {
@@ -636,18 +621,7 @@ private:
 							point.y = msg->ranges[i] * sinf(msg->angle_min + msg->angle_increment * i - M_PI/2);
 						}
             transformed_scan_points.push_back(point);    
-
-						//test
-						geometry_msgs::msg::Point32 point32;
-						point32.x = point.x;
-						point32.y = point.y;
-						point32.z = 0.0;
-						point_cloud.points.push_back(point32);
-
         }
-
-				point_cloud.header.stamp = this->now();
-				point_cloud_pub_->publish(point_cloud);
     }
 
     void map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
