@@ -442,24 +442,35 @@ class ndt_cpp_ros2 : public rclcpp::Node
 public:
     ndt_cpp_ros2():Node("ndt_cpp_ros2")
     {
+				// パラメータの宣言
+				// tfのフレーム名
 				this->declare_parameter("map_frame_id", "map");	
 				this->declare_parameter("odom_frame_id", "odom");
 				this->declare_parameter("base_frame_id", "base_link");
 				this->declare_parameter("laser_frame_id", "laser");
+
+				// mapからodomへの初期位置
 				this->declare_parameter("initial_pose_x", 0.0);
 				this->declare_parameter("initial_pose_y", 0.0);
 				this->declare_parameter("initial_pose_yaw", 0.0);
+
+				// LiDARが逆さまならtrue
 				this->declare_parameter("reverse_scan", false);
+
+				// 処理周期
+				this->declare_parameter("frequency_millisec", 100);
 				
+				// tfのbroadcaster, listener, buffer
 				tfBroadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 				tfBuffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
 				tfListener_ = std::make_shared<tf2_ros::TransformListener>(*tfBuffer_);
+
         scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
             "scan", rclcpp::SensorDataQoS(), std::bind(&ndt_cpp_ros2::scan_callback, this, std::placeholders::_1));
         map_sub_ =this->create_subscription<nav_msgs::msg::OccupancyGrid>(
             "map", 10, std::bind(&ndt_cpp_ros2::map_callback, this, std::placeholders::_1));
         pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("output/pose", 10);
-        timer_ = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&ndt_cpp_ros2::timer_callback, this));
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(this->get_parameter("frequency").as_int()), std::bind(&ndt_cpp_ros2::timer_callback, this));
 
         old_point.x = 0.0;
         old_point.y = 0.0;
@@ -567,6 +578,7 @@ private:
 				tf2::fromMsg(odomToLaser.transform, odomToLaserTF2);	
 				tf2::fromMsg(resultTransform.transform, resultTF2);	
 
+				// LiDARが逆さまの時の対応。yawのみを取得してodom->base_linkの変換の回転を作成
 				float yaw = tf2::getYaw(odomToLaserTF2.getRotation());
 				tf2::Quaternion odomToLaserTF2Rot;
 				odomToLaserTF2Rot.setRPY(0.0, 0.0, yaw);
